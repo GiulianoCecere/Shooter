@@ -13,5 +13,14 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static int constant = 1;
+  public static class WheelConstants {
+    public static final int wheelMotor1ID = 1; //TO FIND ASAP
+    public static final int wheelMotor2ID = 2; //TO FIND ASAP
+
+    public static final int wheelButtonID = 1;
+
+    public static final double wheelVoltage = 3;
+  }
+  
+  public static final int controllerPort = 1;
 }
