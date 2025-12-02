@@ -40,7 +40,10 @@ public class RobotContainer {
   private void configureBindings() {
     new JoystickButton(controller, wheelButtonID).whileTrue(mainWheel.setVoltageAndStop(wheelVoltage));
 
-    new JoystickButton(controller, swivelBaseButton1ID).whileTrue(swivelBase.setVoltageAndStop(swivelBaseVoltage * 2));
-    new JoystickButton(controller, swivelBaseButton2ID).whileTrue(swivelBase.setVoltageAndStop(-swivelBaseVoltage * 2));
+    //new JoystickButton(controller, swivelBaseButton1ID).onTrue(swivelBase.setVoltage(swivelBaseVoltage));
+    //new JoystickButton(controller, swivelBaseButton2ID).onTrue(swivelBase.setVoltage(0));
+    
+    new JoystickButton(controller, swivelBaseButton1ID).whileTrue(swivelBase.setVoltageAndStop(swivelBaseVoltage));
+    new JoystickButton(controller, swivelBaseButton2ID).whileTrue(swivelBase.setVoltageAndStop(-swivelBaseVoltage));
   }
 }

@@ -36,5 +36,7 @@ public final class Constants {
     public static final int swivelBaseButton2ID = Controller.swivelBaseButton2ID;
 
     public static final double swivelBaseVoltage = 1;
+
+    public static final double maxVoltage = 12;
   }
 }

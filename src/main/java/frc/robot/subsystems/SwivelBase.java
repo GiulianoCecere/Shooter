@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -17,11 +18,11 @@ import static frc.robot.Constants.SwivelBaseConstants.*;
 import java.util.function.BooleanSupplier;
 
 public class SwivelBase extends SubsystemBase {
-  private final TalonSRX swivelBaseMotor;
+  private final WPI_TalonSRX swivelBaseMotor;
   
   /** Creates a new SwivelBase. */
   public SwivelBase() {
-    swivelBaseMotor = new TalonSRX(swivelBaseMotorID);
+    swivelBaseMotor = new WPI_TalonSRX(swivelBaseMotorID);
 
     swivelBaseMotor.setNeutralMode(NeutralMode.Brake);
   }
@@ -32,11 +33,15 @@ public class SwivelBase extends SubsystemBase {
   }
 
   private Runnable stop() {
-    return () -> swivelBaseMotor.set(ControlMode.Current, 0);
+    return () -> swivelBaseMotor.set(0);
   }
 
   private Runnable setMotorVoltage(final double volts) {
-    return () -> swivelBaseMotor.set(ControlMode.Current, volts);
+    if(Math.abs(volts) <= 12)
+      return () -> swivelBaseMotor.set(volts / maxVoltage); //velocity
+    
+    //max Velocity, but 0 for safety (for now)
+    return () -> swivelBaseMotor.set(0);
   }
   
   public Command setVoltage(final double volts) {
