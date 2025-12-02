@@ -16,6 +16,8 @@ public final class Constants {
   public static class Controller {
     public static final int controllerPort = 0;
     public static final int wheelButtonId = 1;
+    public static final int swivelBaseButton1ID = 3;
+    public static final int swivelBaseButton2ID = 4;
   }
   
   public static class WheelConstants {
@@ -25,5 +27,14 @@ public final class Constants {
     public static final int wheelButtonID = Controller.wheelButtonId;
 
     public static final double wheelVoltage = 3;
+  }
+
+  public static class SwivelBaseConstants {
+    public static final int swivelBaseMotorID = 35;
+
+    public static final int swivelBaseButton1ID = Controller.swivelBaseButton1ID;
+    public static final int swivelBaseButton2ID = Controller.swivelBaseButton2ID;
+
+    public static final double swivelBaseVoltage = 1;
   }
 }
